@@ -342,13 +342,13 @@
     box-shadow: 0 4px 16px rgba(245,82,0,0.25);
   }
 
-  /* ── ORDERING ── */
+  /* ── MENU SHOWCASE ── */
   .ordering {
     background: var(--orange); color: var(--white);
     position: relative; overflow: hidden;
   }
   .ordering::before {
-    content: 'SANDOS'; position: absolute;
+    content: 'MENU'; position: absolute;
     right: -2rem; top: 50%; transform: translateY(-50%);
     font-family: 'Bebas Neue', sans-serif; font-size: 20rem;
     color: rgba(0,0,0,0.06); line-height: 1;
@@ -359,57 +359,102 @@
     position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(to right, rgba(255,255,255,0.4), transparent);
   }
-  .ordering-inner {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
-    align-items: start; position: relative; z-index: 2;
+  .menu-showcase-inner { position: relative; z-index: 2; }
+  .menu-showcase-hdr {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1.5rem;
   }
   .ordering .section-label { color: rgba(255,255,255,0.65); }
   .ordering .section-label::before { background: rgba(255,255,255,0.65); }
   .ordering .section-title { color: var(--white); }
-  .ordering-sub { font-size: 1rem; color: rgba(255,255,255,0.82); line-height: 1.7; margin-bottom: 2rem; }
-  .order-form { display: flex; flex-direction: column; gap: 0.8rem; }
-  .order-form select, .order-form input {
-    background: rgba(0,0,0,0.16);
-    border: 1.5px solid rgba(255,255,255,0.25);
-    color: var(--white); padding: 0.9rem 1.2rem;
-    font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem;
-    border-radius: 2px; appearance: none; width: 100%;
-    transition: border-color 0.2s, background 0.2s;
+  .cat-tabs {
+    display: flex; border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 3px; overflow: hidden; align-self: center;
   }
-  .order-form select:focus, .order-form input:focus {
-    outline: none; border-color: rgba(255,255,255,0.8);
-    background: rgba(0,0,0,0.24);
-  }
-  .order-form select option { background: var(--black); color: var(--white); }
-  .order-form input::placeholder { color: rgba(255,255,255,0.38); }
-  .menu-label {
-    font-family: 'Space Mono', monospace; font-size: 0.65rem;
-    letter-spacing: 0.24em; text-transform: uppercase;
-    color: rgba(255,255,255,0.6); margin-bottom: 1rem;
-  }
-  .menu-tabs { display: flex; gap: 0; margin-bottom: 1.25rem; border: 1px solid rgba(255,255,255,0.25); border-radius: 2px; overflow: hidden; width: fit-content; }
-  .menu-tab {
-    font-family: 'Space Mono', monospace; font-size: 0.68rem;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 0.5rem 1.2rem;
-    cursor: pointer; border: none;
-    color: rgba(255,255,255,0.65); background: transparent;
+  .cat-tab {
+    font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+    letter-spacing: 0.12em; padding: 0.55rem 2rem;
+    cursor: pointer; border: none; background: transparent;
+    color: rgba(255,255,255,0.65);
     transition: background 0.2s, color 0.2s;
   }
-  .menu-tab.active { background: var(--black); color: var(--white); }
-  .menu-tab:not(.active):hover { background: rgba(0,0,0,0.15); color: var(--white); }
-  .menu-items { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cat-tab.active { background: var(--black); color: var(--white); }
+  .cat-tab:not(.active):hover { background: rgba(0,0,0,0.18); color: var(--white); }
+  .menu-showcase-body {
+    display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2.5rem;
+    align-items: start;
+  }
+  .slideshow-col {
+    position: relative; border-radius: 4px; overflow: hidden;
+    aspect-ratio: 4/3; background: var(--black);
+  }
+  .slides-track {
+    position: absolute; inset: 0;
+    display: grid; grid-template-columns: 100%; grid-template-rows: 100%;
+  }
+  .slide {
+    grid-area: 1/1; opacity: 0;
+    transition: opacity 0.65s ease;
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .slide.active { opacity: 1; }
+  .slide-placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 100%; height: 100%; gap: 0.75rem;
+  }
+  .slide-placeholder-emoji { font-size: 7rem; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.6)); }
+  .slide-placeholder-label {
+    font-family: 'Space Mono', monospace; font-size: 0.58rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: rgba(255,255,255,0.18);
+  }
+  .slide-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.45); color: var(--white); border: none;
+    width: 46px; height: 46px; border-radius: 50%; font-size: 1.15rem;
+    cursor: pointer; z-index: 5;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .slide-arrow:hover { background: rgba(0,0,0,0.82); transform: translateY(-50%) scale(1.1); }
+  .slide-prev { left: 1rem; }
+  .slide-next { right: 1rem; }
+  .slide-info-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 2.5rem 1.5rem 1.25rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%);
+    z-index: 4;
+  }
+  .slide-item-name {
+    font-family: 'Bebas Neue', sans-serif; font-size: 2.1rem;
+    color: var(--white); letter-spacing: 0.06em; line-height: 1;
+  }
+  .slide-item-price {
+    font-family: 'Space Mono', monospace; font-size: 0.78rem;
+    color: rgba(255,255,255,0.72); letter-spacing: 0.14em; margin-top: 0.3rem;
+  }
+  .slide-dots {
+    position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 0.45rem; z-index: 6;
+  }
+  .slide-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(255,255,255,0.32); cursor: pointer;
+    transition: background 0.2s, transform 0.2s; border: none;
+  }
+  .slide-dot.active { background: var(--white); transform: scale(1.35); }
+  .menu-list-col { display: flex; flex-direction: column; }
+  .menu-items { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
   .menu-item {
     display: flex; align-items: center; justify-content: space-between;
     background: rgba(0,0,0,0.14); padding: 1rem 1.2rem;
-    border-radius: 2px;
-    border: 1px solid transparent;
+    border-radius: 2px; border: 1px solid transparent;
     transition: background 0.2s, border-color 0.2s, transform 0.15s;
     cursor: pointer;
   }
-  .menu-item:hover {
-    background: rgba(0,0,0,0.26);
-    border-color: rgba(255,255,255,0.15);
+  .menu-item:hover, .menu-item.active-item {
+    background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.18);
     transform: translateX(4px);
   }
   .menu-item-left { display: flex; align-items: center; gap: 1rem; }
@@ -432,8 +477,7 @@
   .cart-bar {
     display: flex; align-items: center; justify-content: space-between;
     background: rgba(0,0,0,0.25); padding: 1rem 1.4rem;
-    border-radius: 2px; margin-top: 1rem;
-    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px; border: 1px solid rgba(255,255,255,0.1);
   }
   .cart-label { font-size: 0.75rem; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Space Mono', monospace; }
   .cart-total { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--white); }
@@ -576,7 +620,9 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 960px) {
-    .locations-grid, .ordering-inner, .cuts-inner, .about-strip { grid-template-columns: 1fr; }
+    .locations-grid, .menu-showcase-body, .cuts-inner, .about-strip { grid-template-columns: 1fr; }
+    .menu-showcase-hdr { align-items: flex-start; }
+    .slideshow-col { aspect-ratio: 3/2; }
     footer { grid-template-columns: 1fr 1fr; }
     section { padding: 5rem 2rem; }
     nav { padding: 0 1.5rem; }
@@ -665,149 +711,39 @@
   </div>
 </section>
 
-<!-- ONLINE ORDERING -->
+<!-- MENU SHOWCASE -->
 <section class="ordering" id="order">
-  <div class="ordering-inner">
-    <div>
-      <div class="section-label">Sandos & Bowls</div>
-      <div class="section-title">ORDER<br>ONLINE.<br>PICK UP<br>HOT.</div>
-      <p class="ordering-sub">Skip the wait. Build your order, pick your location, and we'll have it ready fresh. Served Mon–Sun 11AM–6PM.</p>
-      <div class="order-form">
-        <select>
-          <option value="" disabled selected>Choose pickup location</option>
-          <option>Burbank · 445 S Glenoaks Blvd</option>
-          <option>La Crescenta</option>
-        </select>
-        <input type="text" placeholder="Your name"/>
-        <input type="text" placeholder="Pickup time (e.g. 12:30 PM)"/>
-        <input type="text" placeholder="Special notes / requests"/>
+  <div class="menu-showcase-inner">
+    <div class="menu-showcase-hdr">
+      <div>
+        <div class="section-label reveal">Hot &amp; Fresh</div>
+        <div class="section-title reveal reveal-delay-1">MENU</div>
+      </div>
+      <div class="cat-tabs">
+        <button class="cat-tab active" onclick="switchCat('sandwiches',this)">Sandwiches</button>
+        <button class="cat-tab" onclick="switchCat('bowls',this)">Bowls</button>
       </div>
     </div>
-    <div>
-      <p class="menu-label">Today's Menu</p>
-      <div class="menu-tabs">
-        <button class="menu-tab active" onclick="showTab('sandos', this)">Sandos</button>
-        <button class="menu-tab" onclick="showTab('bowls', this)">Bowls</button>
+    <div class="menu-showcase-body">
+      <div class="slideshow-col">
+        <div class="slides-track" id="slides-track"></div>
+        <button class="slide-arrow slide-prev" onclick="slidePrev()">&#8592;</button>
+        <button class="slide-arrow slide-next" onclick="slideNext()">&#8594;</button>
+        <div class="slide-info-overlay">
+          <div class="slide-item-name" id="slide-item-name"></div>
+          <div class="slide-item-price" id="slide-item-price"></div>
+        </div>
+        <div class="slide-dots" id="slide-dots"></div>
       </div>
-
-      <!-- SANDOS -->
-      <div class="menu-items" id="tab-sandos">
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🥩</div>
-            <div>
-              <div class="menu-item-name">The Big Papa Pastrami</div>
-              <div class="menu-item-desc">14hr smoked pastrami brisket, cheddar, pickled cherry peppers, papa's aioli, toasted sourdough</div>
-            </div>
+      <div class="menu-list-col">
+        <div class="menu-items" id="menu-items-list"></div>
+        <div class="cart-bar">
+          <div>
+            <div class="cart-label">Cart total</div>
+            <div class="cart-total" id="cart-total">$0.00</div>
           </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$18</span>
-            <button class="add-btn" data-price="18">+</button>
-          </div>
+          <button class="btn-dark">Checkout &#8594;</button>
         </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🇮🇹</div>
-            <div>
-              <div class="menu-item-name">The Milano</div>
-              <div class="menu-item-desc">Nobile salami, swiss, romesco, roasted red pepper, arugula, salt & vinegar chips, papa's aioli, ciabatta</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$17</span>
-            <button class="add-btn" data-price="17">+</button>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🌶️</div>
-            <div>
-              <div class="menu-item-name">Cilantro Chicken Sando</div>
-              <div class="menu-item-desc">Marinated spicy chicken, bolillo bread, mayo, cilantro, onion, avocado crema salsa</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$16</span>
-            <button class="add-btn" data-price="16">+</button>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🧀</div>
-            <div>
-              <div class="menu-item-name">Spicy Chicken Melt</div>
-              <div class="menu-item-desc">Grilled spicy chicken, provolone, caramelized onions, sun dried tomatoes, arugula, papa's pesto, ciabatta</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$17</span>
-            <button class="add-btn" data-price="17">+</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BOWLS -->
-      <div class="menu-items" id="tab-bowls" style="display:none;">
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🍚</div>
-            <div>
-              <div class="menu-item-name">Korean Pork Belly Bowl</div>
-              <div class="menu-item-desc">Grilled korean pork belly, white rice, carrot/cucumber kimchi, togarashi, green onion</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$20</span>
-            <button class="add-btn" data-price="20">+</button>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🌟</div>
-            <div>
-              <div class="menu-item-name">Saffron Lemon Chicken Bowl</div>
-              <div class="menu-item-desc">Saffron lemon garlic chicken, white rice, shirazi salad, cucumber, parsley, papa's aioli</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$19</span>
-            <button class="add-btn" data-price="19">+</button>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🔥</div>
-            <div>
-              <div class="menu-item-name">Half & Half Bowl</div>
-              <div class="menu-item-desc">Saffron lemon chicken + spicy chicken, white rice, shirazi salad, cucumber, papa's aioli</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">$19</span>
-            <button class="add-btn" data-price="19">+</button>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-left">
-            <div class="menu-item-icon">🥩</div>
-            <div>
-              <div class="menu-item-name">Lamb Chop Halal Bowl</div>
-              <div class="menu-item-desc">Premium halal lamb chops, rice, fresh salad, house sauces</div>
-            </div>
-          </div>
-          <div class="menu-item-right">
-            <span class="menu-item-price">MKT</span>
-            <button class="add-btn" data-price="0">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="cart-bar">
-        <div>
-          <div class="cart-label">Cart total</div>
-          <div class="cart-total" id="cart-total">$0.00</div>
-        </div>
-        <button class="btn-dark">Checkout →</button>
       </div>
     </div>
   </div>
@@ -970,29 +906,91 @@
     });
   }, { passive: true });
 
-  // ── TAB SWITCHING ──
-  function showTab(tab, btn) {
-    document.getElementById('tab-sandos').style.display = tab === 'sandos' ? 'flex' : 'none';
-    document.getElementById('tab-bowls').style.display = tab === 'bowls' ? 'flex' : 'none';
-    document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+  // ── MENU SHOWCASE ──
+  const menuData = {
+    sandwiches: [
+      { name: 'The Big Papa Pastrami', desc: "14hr smoked pastrami brisket, cheddar, pickled cherry peppers, papa's aioli, toasted sourdough", price: '$18', priceVal: 18, icon: '🥩', bg: 'linear-gradient(145deg,#1a0f00,#3d2200)' },
+      { name: 'The Milano', desc: "Nobile salami, swiss, romesco, roasted red pepper, arugula, salt & vinegar chips, papa's aioli, ciabatta", price: '$17', priceVal: 17, icon: '🇮🇹', bg: 'linear-gradient(145deg,#100a14,#261535)' },
+      { name: 'Cilantro Chicken Sando', desc: 'Marinated spicy chicken, bolillo bread, mayo, cilantro, onion, avocado crema salsa', price: '$16', priceVal: 16, icon: '🌶️', bg: 'linear-gradient(145deg,#0a1400,#1a2d00)' },
+      { name: 'Spicy Chicken Melt', desc: "Grilled spicy chicken, provolone, caramelized onions, sun dried tomatoes, arugula, papa's pesto, ciabatta", price: '$17', priceVal: 17, icon: '🧀', bg: 'linear-gradient(145deg,#160008,#2e0018)' },
+    ],
+    bowls: [
+      { name: 'Korean Pork Belly Bowl', desc: 'Grilled korean pork belly, white rice, carrot/cucumber kimchi, togarashi, green onion', price: '$20', priceVal: 20, icon: '🍚', bg: 'linear-gradient(145deg,#150400,#2e0f00)' },
+      { name: 'Saffron Lemon Chicken Bowl', desc: "Saffron lemon garlic chicken, white rice, shirazi salad, cucumber, parsley, papa's aioli", price: '$19', priceVal: 19, icon: '🌟', bg: 'linear-gradient(145deg,#140e00,#2e1e00)' },
+      { name: 'Half & Half Bowl', desc: "Saffron lemon chicken + spicy chicken, white rice, shirazi salad, cucumber, papa's aioli", price: '$19', priceVal: 19, icon: '🔥', bg: 'linear-gradient(145deg,#0f0f0f,#1e1e1e)' },
+      { name: 'Lamb Chop Halal Bowl', desc: 'Premium halal lamb chops, rice, fresh salad, house sauces', price: 'MKT', priceVal: 0, icon: '🥩', bg: 'linear-gradient(145deg,#0e0014,#1e0030)' },
+    ]
+  };
+
+  let currentCat = 'sandwiches';
+  let currentSlide = 0;
+  let cartTotal = 0;
+  const cartTotalEl = document.getElementById('cart-total');
+
+  function buildMenu(cat) {
+    const items = menuData[cat];
+    const track = document.getElementById('slides-track');
+    const list = document.getElementById('menu-items-list');
+    const dots = document.getElementById('slide-dots');
+    track.innerHTML = ''; list.innerHTML = ''; dots.innerHTML = '';
+
+    items.forEach((item, i) => {
+      // Slide — replace item.bg with background-image:url('photo.jpg') for real photos
+      const slide = document.createElement('div');
+      slide.className = 'slide' + (i === 0 ? ' active' : '');
+      slide.style.background = item.bg;
+      if (item.img) slide.style.backgroundImage = "url('" + item.img + "')";
+      slide.innerHTML = '<div class="slide-placeholder"><div class="slide-placeholder-emoji">' + item.icon + '</div><div class="slide-placeholder-label">Add photo here</div></div>';
+      track.appendChild(slide);
+
+      // Dot
+      const dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', item.name);
+      dot.addEventListener('click', () => goToSlide(i));
+      dots.appendChild(dot);
+
+      // List row
+      const row = document.createElement('div');
+      row.className = 'menu-item' + (i === 0 ? ' active-item' : '');
+      row.innerHTML = '<div class="menu-item-left"><div class="menu-item-icon">' + item.icon + '</div><div><div class="menu-item-name">' + item.name + '</div><div class="menu-item-desc">' + item.desc + '</div></div></div><div class="menu-item-right"><span class="menu-item-price">' + item.price + '</span><button class="add-btn" data-price="' + item.priceVal + '">+</button></div>';
+      row.addEventListener('click', (e) => { if (!e.target.classList.contains('add-btn')) goToSlide(i); });
+      row.querySelector('.add-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        const p = parseFloat(e.currentTarget.dataset.price);
+        if (p > 0) { cartTotal += p; cartTotalEl.textContent = '$' + cartTotal.toFixed(2); }
+        e.currentTarget.textContent = '✓';
+        e.currentTarget.style.background = 'rgba(255,255,255,0.85)';
+        setTimeout(() => { e.currentTarget.textContent = '+'; e.currentTarget.style.background = 'var(--white)'; }, 900);
+      });
+      list.appendChild(row);
+    });
+
+    updateSlideUI(0);
   }
 
-  // ── CART ──
-  let total = 0;
-  const totalEl = document.getElementById('cart-total');
-  document.querySelectorAll('.add-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const price = parseFloat(btn.dataset.price);
-      if (price > 0) {
-        total += price;
-        totalEl.textContent = '$' + total.toFixed(2);
-      }
-      btn.textContent = '✓';
-      btn.style.background = 'rgba(255,255,255,0.85)';
-      setTimeout(() => { btn.textContent = '+'; btn.style.background = 'var(--white)'; }, 900);
-    });
-  });
+  function updateSlideUI(idx) {
+    const items = menuData[currentCat];
+    currentSlide = (idx + items.length) % items.length;
+    document.getElementById('slide-item-name').textContent = items[currentSlide].name;
+    document.getElementById('slide-item-price').textContent = items[currentSlide].price;
+    document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+    document.querySelectorAll('.slide-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    document.querySelectorAll('#menu-items-list .menu-item').forEach((m, i) => m.classList.toggle('active-item', i === currentSlide));
+  }
+
+  function goToSlide(idx) { updateSlideUI(idx); }
+  function slidePrev() { updateSlideUI(currentSlide - 1); }
+  function slideNext() { updateSlideUI(currentSlide + 1); }
+
+  function switchCat(cat, btn) {
+    currentCat = cat; currentSlide = 0;
+    document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    buildMenu(cat);
+  }
+
+  buildMenu('sandwiches');
 
   // ── NAV scroll shadow ──
   window.addEventListener('scroll', () => {
