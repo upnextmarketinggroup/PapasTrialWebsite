@@ -595,91 +595,39 @@
   <svg class="hero-bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet"
        xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
        style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;">
-    <defs>
-      <symbol id="anim-cow" viewBox="0 0 240 140">
-        <g fill="currentColor">
-          <path d="M30,55 Q30,40 50,38 L175,38 Q198,38 203,55 L205,78 Q205,88 195,88 L50,88 Q35,88 32,80 Z"/>
-          <path d="M200,52 Q220,52 226,62 L232,64 Q240,64 240,68 Q240,72 232,72 L226,76 Q220,88 200,86 Z"/>
-          <path d="M218,52 Q222,46 226,48 Q226,52 222,55 Z"/>
-          <path d="M207,46 Q210,40 215,42 L213,52 Z"/>
-          <path d="M55,88 L65,88 L64,118 L56,118 Z"/>
-          <path d="M80,88 L90,88 L89,118 L81,118 Z"/>
-          <path d="M160,88 L170,88 L169,118 L161,118 Z"/>
-          <path d="M185,88 L195,88 L194,118 L186,118 Z"/>
-          <path d="M30,52 Q18,52 18,68 Q18,82 25,84 L27,76 Q28,68 32,65 Z"/>
-          <ellipse cx="135" cy="93" rx="13" ry="6"/>
-        </g>
-        <g fill="#0f0e0d" opacity="0.55">
-          <ellipse cx="80" cy="55" rx="11" ry="6"/>
-          <ellipse cx="130" cy="65" rx="14" ry="7"/>
-          <ellipse cx="170" cy="58" rx="8" ry="5"/>
-          <circle cx="232" cy="67" r="1.5"/>
-        </g>
-      </symbol>
-      <symbol id="anim-chicken" viewBox="0 0 140 140">
-        <g fill="currentColor">
-          <ellipse cx="60" cy="85" rx="48" ry="35"/>
-          <circle cx="100" cy="55" r="18"/>
-          <path d="M88,38 Q92,28 98,33 Q102,25 106,32 Q112,26 113,36 L108,42 L102,38 L96,42 Z"/>
-          <path d="M117,55 L130,57 L117,60 Z"/>
-          <path d="M102,65 Q100,75 96,75 Q96,68 100,65 Z"/>
-          <path d="M22,75 Q5,55 8,42 Q18,55 30,62 Z"/>
-          <path d="M18,85 Q0,80 5,68 Q14,75 28,77 Z"/>
-          <path d="M14,68 Q-2,42 6,30 Q14,46 26,55 Z"/>
-          <rect x="50" y="118" width="3" height="14"/>
-          <rect x="68" y="118" width="3" height="14"/>
-          <path d="M47,132 L57,132 L52,128 Z"/>
-          <path d="M65,132 L75,132 L70,128 Z"/>
-        </g>
-        <g fill="#0f0e0d" opacity="0.7">
-          <circle cx="104" cy="51" r="2"/>
-          <path d="M50,75 Q70,68 85,80 Q70,90 50,88 Z" opacity="0.35"/>
-        </g>
-      </symbol>
-      <symbol id="anim-fish" viewBox="0 0 200 100">
-        <g fill="currentColor">
-          <path d="M28,50 Q50,15 110,15 Q152,15 168,42 Q178,32 188,32 Q196,32 192,44 L188,52 Q196,60 192,72 Q188,76 178,72 Q168,62 158,60 Q142,82 105,85 Q50,82 28,50 Z"/>
-          <path d="M78,18 Q95,5 113,12 Q105,22 95,22 Z"/>
-          <path d="M70,80 Q80,90 95,84 Q88,78 78,77 Z"/>
-        </g>
-        <g fill="none" stroke="#0f0e0d" stroke-width="2" opacity="0.55">
-          <path d="M65,30 Q73,50 65,68"/>
-          <path d="M90,28 Q98,50 90,72" opacity="0.6"/>
-          <path d="M115,28 Q123,50 115,72" opacity="0.45"/>
-        </g>
-        <circle cx="50" cy="42" r="3" fill="#0f0e0d"/>
-        <circle cx="50" cy="42" r="1" fill="currentColor"/>
-      </symbol>
-    </defs>
     <rect width="1600" height="900" fill="#0f0e0d"/>
-    <g color="#e8dfd0" opacity="0.5">
-      <use href="#anim-cow"     x="33"   y="48"  width="200" height="130"/>
-      <use href="#anim-chicken" x="350"  y="48"  width="100" height="130"/>
-      <use href="#anim-fish"    x="577"  y="68"  width="180" height="90"/>
-      <use href="#anim-cow"     x="833"  y="48"  width="200" height="130"/>
-      <use href="#anim-chicken" x="1150" y="48"  width="100" height="130"/>
-      <use href="#anim-fish"    x="1377" y="68"  width="180" height="90"/>
+    <g opacity="0.55">
+      <!-- Row 1 -->
+      <image href="assets/cow.png"     x="28"   y="41"  width="210" height="145"/>
+      <image href="assets/chicken.png" x="340"  y="51"  width="120" height="125"/>
+      <image href="assets/fish.png"    x="567"  y="73"  width="200" height="79"/>
+      <image href="assets/cow.png"     x="828"  y="41"  width="210" height="145"/>
+      <image href="assets/chicken.png" x="1140" y="51"  width="120" height="125"/>
+      <image href="assets/fish.png"    x="1367" y="73"  width="200" height="79"/>
 
-      <use href="#anim-chicken" x="83"   y="273" width="100" height="130"/>
-      <use href="#anim-fish"    x="310"  y="293" width="180" height="90"/>
-      <use href="#anim-cow"     x="567"  y="273" width="200" height="130"/>
-      <use href="#anim-chicken" x="883"  y="273" width="100" height="130"/>
-      <use href="#anim-fish"    x="1110" y="293" width="180" height="90"/>
-      <use href="#anim-cow"     x="1367" y="273" width="200" height="130"/>
+      <!-- Row 2 -->
+      <image href="assets/chicken.png" x="83"   y="276" width="120" height="125"/>
+      <image href="assets/fish.png"    x="310"  y="298" width="200" height="79"/>
+      <image href="assets/cow.png"     x="567"  y="266" width="210" height="145"/>
+      <image href="assets/chicken.png" x="883"  y="276" width="120" height="125"/>
+      <image href="assets/fish.png"    x="1110" y="298" width="200" height="79"/>
+      <image href="assets/cow.png"     x="1367" y="266" width="210" height="145"/>
 
-      <use href="#anim-fish"    x="43"   y="518" width="180" height="90"/>
-      <use href="#anim-cow"     x="300"  y="498" width="200" height="130"/>
-      <use href="#anim-chicken" x="617"  y="498" width="100" height="130"/>
-      <use href="#anim-fish"    x="843"  y="518" width="180" height="90"/>
-      <use href="#anim-cow"     x="1100" y="498" width="200" height="130"/>
-      <use href="#anim-chicken" x="1417" y="498" width="100" height="130"/>
+      <!-- Row 3 -->
+      <image href="assets/fish.png"    x="43"   y="523" width="200" height="79"/>
+      <image href="assets/cow.png"     x="300"  y="491" width="210" height="145"/>
+      <image href="assets/chicken.png" x="617"  y="501" width="120" height="125"/>
+      <image href="assets/fish.png"    x="843"  y="523" width="200" height="79"/>
+      <image href="assets/cow.png"     x="1100" y="491" width="210" height="145"/>
+      <image href="assets/chicken.png" x="1417" y="501" width="120" height="125"/>
 
-      <use href="#anim-cow"     x="33"   y="723" width="200" height="130"/>
-      <use href="#anim-chicken" x="350"  y="723" width="100" height="130"/>
-      <use href="#anim-fish"    x="577"  y="743" width="180" height="90"/>
-      <use href="#anim-cow"     x="833"  y="723" width="200" height="130"/>
-      <use href="#anim-chicken" x="1150" y="723" width="100" height="130"/>
-      <use href="#anim-fish"    x="1377" y="743" width="180" height="90"/>
+      <!-- Row 4 -->
+      <image href="assets/cow.png"     x="28"   y="716" width="210" height="145"/>
+      <image href="assets/chicken.png" x="340"  y="726" width="120" height="125"/>
+      <image href="assets/fish.png"    x="567"  y="748" width="200" height="79"/>
+      <image href="assets/cow.png"     x="828"  y="716" width="210" height="145"/>
+      <image href="assets/chicken.png" x="1140" y="726" width="120" height="125"/>
+      <image href="assets/fish.png"    x="1367" y="748" width="200" height="79"/>
     </g>
   </svg>
 
