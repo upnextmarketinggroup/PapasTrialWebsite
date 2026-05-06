@@ -433,11 +433,11 @@
 
   /* ── CUTS ── */
   .cuts-section { background: var(--white); }
-  .cuts-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem; align-items: center; }
+  .cuts-inner { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 4rem; align-items: center; }
   .cuts-list { display: flex; flex-direction: column; }
   .cut-item {
-    display: flex; align-items: center; gap: 1.25rem;
-    padding: 1.1rem 0; border-bottom: 1px solid rgba(0,0,0,0.08);
+    display: flex; align-items: center; gap: 1.75rem;
+    padding: 1.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.1);
     transition: padding-left 0.25s ease, border-color 0.25s;
     position: relative;
   }
@@ -446,13 +446,13 @@
     position: absolute; right: 0;
     color: var(--orange); opacity: 0;
     transition: opacity 0.2s, right 0.25s;
-    font-size: 0.85rem;
+    font-size: 1.25rem;
   }
-  .cut-item:hover { padding-left: 10px; border-color: rgba(245,82,0,0.25); }
-  .cut-item:hover::after { opacity: 1; right: 4px; }
-  .cut-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--orange); min-width: 2.2rem; opacity: 0.8; }
-  .cut-name { font-weight: 700; font-size: 0.96rem; letter-spacing: 0.01em; }
-  .cut-desc { font-size: 0.78rem; color: var(--gray-mid); margin-left: auto; text-align: right; max-width: 150px; line-height: 1.45; }
+  .cut-item:hover { padding-left: 14px; border-color: rgba(245,82,0,0.3); }
+  .cut-item:hover::after { opacity: 1; right: 6px; }
+  .cut-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--orange); min-width: 3rem; opacity: 0.85; line-height: 1; }
+  .cut-name { font-weight: 700; font-size: 1.45rem; letter-spacing: 0.01em; }
+  .cut-desc { font-size: 1rem; color: var(--gray-mid); margin-left: auto; text-align: right; max-width: 240px; line-height: 1.5; }
 
   /* ── ABOUT ── */
   .about-strip {
